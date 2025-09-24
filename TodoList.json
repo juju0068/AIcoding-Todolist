@@ -1,0 +1,5820 @@
+﻿{
+  "nodes": [
+    {
+      "nodeId": "pluginInput",
+      "name": "自定义插件输入",
+      "intro": "可以配置插件需要哪些输入，利用这些输入来运行插件",
+      "avatar": "core/workflow/template/workflowStart",
+      "flowNodeType": "pluginInput",
+      "showStatus": false,
+      "position": {
+        "x": -1034.062383322158,
+        "y": -233.29008450202008
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "selectedTypeIndex": 0,
+          "valueType": "string",
+          "canEdit": true,
+          "key": "status",
+          "label": "status",
+          "description": "代办事项的完成状态，字符串形式：\n未完成 - 未完成的状态\n已完成 - 已完成的状态\n",
+          "required": false,
+          "toolDescription": "代办事项的完成状态，字符串形式：\n未完成 - 未完成的状态\n已完成 - 已完成的状态\n"
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "selectedTypeIndex": 0,
+          "valueType": "string",
+          "canEdit": true,
+          "key": "question",
+          "label": "question",
+          "description": "提出的问题",
+          "required": true,
+          "toolDescription": "提出的问题"
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "selectedTypeIndex": 0,
+          "valueType": "string",
+          "canEdit": true,
+          "key": "result_answer",
+          "label": "result_answer",
+          "description": "输出",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "id": "status",
+          "valueType": "string",
+          "key": "status",
+          "label": "status",
+          "type": "hidden"
+        },
+        {
+          "id": "question",
+          "valueType": "string",
+          "key": "question",
+          "label": "question",
+          "type": "hidden"
+        },
+        {
+          "id": "result_answer",
+          "valueType": "string",
+          "key": "result_answer",
+          "label": "result_answer",
+          "type": "hidden"
+        }
+      ]
+    },
+    {
+      "nodeId": "pluginOutput",
+      "name": "自定义插件输出",
+      "intro": "自定义配置外部输出，使用插件时，仅暴露自定义配置的输出",
+      "avatar": "core/workflow/template/pluginOutput",
+      "flowNodeType": "pluginOutput",
+      "showStatus": false,
+      "position": {
+        "x": 13655.449471469516,
+        "y": -1892.5546070117634
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "answer",
+          "label": "answer",
+          "description": "回复",
+          "value": [
+            "pluginInput",
+            "result_answer"
+          ]
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "wSy003yLgPos",
+      "name": "HTTP 请求",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 3747.2342506755604,
+        "y": -3119.0205622808335
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "GET",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [
+            {
+              "key": "status",
+              "type": "string",
+              "value": "{{status}}"
+            }
+          ],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "status",
+          "label": "status",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "pluginInput",
+            "status"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "yvtdmsjsl0i2",
+      "name": "AI 对话",
+      "intro": "AI 大模型对话",
+      "avatar": "core/workflow/template/aiChat",
+      "flowNodeType": "chatNode",
+      "showStatus": true,
+      "position": {
+        "x": 5173.099466652958,
+        "y": -3372.074580964486
+      },
+      "version": "4.9.7",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "settingLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "valueType": "string",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "temperature",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 0,
+          "valueType": "number",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "maxToken",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 2000,
+          "valueType": "number",
+          "min": 100,
+          "max": 4000,
+          "step": 50,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "isResponseAnswerText",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": true,
+          "valueType": "boolean",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatQuoteRole",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "system",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteTemplate",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quotePrompt",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatVision",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatReasoning",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatTopP",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "number",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatStopSign",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatResponseFormat",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatJsonSchema",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.ai.Prompt",
+          "description": "common:core.app.tip.systemPromptTip",
+          "placeholder": "common:core.app.tip.chatNodeSystemPromptTip",
+          "selectedTypeIndex": 0,
+          "value": "你可以根据我提供的json数据回答我提出的问题，并以小助手的语气回复，并在回复中不要提及json的字样。\njson中各个字段的意义是：\nid - 待办事项ID\ntodo - 待办事项内容\nstatus - 待办事项状态\ntodo_time - 待办时间\ncreated_time - 待办事项创建时间\ndo_time - 待办事项完成时间，值为null则未记录完成时间",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteQA",
+          "renderTypeList": [
+            "settingDatasetQuotePrompt"
+          ],
+          "label": "",
+          "debugLabel": "知识库引用",
+          "description": "",
+          "valueType": "datasetQuote",
+          "toolDescription": ""
+        },
+        {
+          "key": "fileUrlList",
+          "renderTypeList": [
+            "reference",
+            "input"
+          ],
+          "label": "app:workflow.user_file_input",
+          "debugLabel": "文件链接",
+          "description": "app:workflow.user_file_input_desc",
+          "valueType": "arrayString",
+          "toolDescription": "",
+          "value": []
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "toolDescription": "用户问题",
+          "value": [
+            "rCK3GJxrJvZf",
+            "system_text"
+          ],
+          "debugLabel": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "history",
+          "key": "history",
+          "required": true,
+          "label": "common:core.module.output.label.New context",
+          "description": "将本次回复内容拼接上历史记录，作为新的上下文返回",
+          "valueType": "chatHistory",
+          "type": "static",
+          "valueDesc": "{\n  obj: System | Human | AI;\n  value: string;\n}[]"
+        },
+        {
+          "id": "answerText",
+          "key": "answerText",
+          "required": true,
+          "label": "common:core.module.output.label.Ai response content",
+          "description": "将在 stream 回复完毕后触发",
+          "valueType": "string",
+          "type": "static"
+        },
+        {
+          "id": "reasoningText",
+          "key": "reasoningText",
+          "required": false,
+          "label": "workflow:reasoning_text",
+          "valueType": "string",
+          "type": "static",
+          "invalid": true,
+          "description": ""
+        },
+        {
+          "id": "system_error_text",
+          "key": "system_error_text",
+          "type": "error",
+          "valueType": "string",
+          "label": "workflow:error_text",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "tI4rmmXfterL",
+      "name": "文本拼接",
+      "intro": "可对固定或传入的文本进行加工后输出，非字符串类型数据最终会转成字符串类型。",
+      "avatar": "core/workflow/template/textConcat",
+      "flowNodeType": "textEditor",
+      "position": {
+        "x": 46.336329743061924,
+        "y": -373.4984381727422
+      },
+      "version": "486",
+      "inputs": [
+        {
+          "key": "system_textareaInput",
+          "renderTypeList": [
+            "textarea"
+          ],
+          "valueType": "string",
+          "required": true,
+          "label": "workflow:concatenation_text",
+          "placeholder": "workflow:input_variable_list",
+          "value": "当前时间为{{now_datetime}},\n我的问题是：{{my_question}}",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "可以引用其他节点的输出，作为文本拼接的变量，通过 {{字段名}} 来引用变量",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "now_datetime",
+          "label": "now_datetime",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "required": true,
+          "value": [
+            "tYaxbKBdyx0u",
+            "time"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "my_question",
+          "label": "my_question",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "required": true,
+          "value": [
+            "pluginInput",
+            "question"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "system_text",
+          "key": "system_text",
+          "label": "workflow:concatenation_result",
+          "type": "static",
+          "valueType": "string",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "tYaxbKBdyx0u",
+      "name": "获取当前时间",
+      "intro": "获取用户当前时区的时间。",
+      "toolDescription": "Get current time",
+      "avatar": "/imgs/workflow/getCurrentTime.svg",
+      "flowNodeType": "pluginModule",
+      "showStatus": false,
+      "position": {
+        "x": -526.0531769934145,
+        "y": -183.8204167700457
+      },
+      "version": "0.1.0",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "time",
+          "type": "static",
+          "key": "time",
+          "valueType": "string",
+          "label": "time",
+          "description": ""
+        }
+      ],
+      "pluginId": "community-getTime",
+      "toolConfig": {
+        "systemTool": {
+          "toolId": "systemTool-getTime"
+        }
+      },
+      "catchError": false
+    },
+    {
+      "nodeId": "rCK3GJxrJvZf",
+      "name": "文本拼接#2",
+      "intro": "可对固定或传入的文本进行加工后输出，非字符串类型数据最终会转成字符串类型。",
+      "avatar": "core/workflow/template/textConcat",
+      "flowNodeType": "textEditor",
+      "position": {
+        "x": 4577.05003928815,
+        "y": -3009.0128907703624
+      },
+      "version": "486",
+      "inputs": [
+        {
+          "key": "system_textareaInput",
+          "renderTypeList": [
+            "textarea"
+          ],
+          "valueType": "string",
+          "required": true,
+          "label": "workflow:concatenation_text",
+          "placeholder": "workflow:input_variable_list",
+          "value": "json结果是：\n{{get_json}}\n{{my_question}}",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "可以引用其他节点的输出，作为文本拼接的变量，通过 {{字段名}} 来引用变量",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "get_json",
+          "label": "get_json",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "required": true,
+          "value": [
+            "wSy003yLgPos",
+            "httpRawResponse"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "my_question",
+          "label": "my_question",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "required": true,
+          "value": [
+            "tI4rmmXfterL",
+            "system_text"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "system_text",
+          "key": "system_text",
+          "label": "workflow:concatenation_result",
+          "type": "static",
+          "valueType": "string",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "tKwoYVR4S9f3",
+      "name": "HTTP 请求#2",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 3876.8303702481326,
+        "y": -2032.6010648974998
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "POST",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "{\r\n    \"todo\": \"{{todo}}\",\r\n    \"status\": \"未完成\",\r\n    \"todo_time\": \"{{todo_time}}\",\r\n    \"created_time\": \"{{now_time}}\"\r\n}",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "todo",
+          "label": "todo",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "hhgCcZNC4ywQ",
+            "qLUQfhG0ILRX"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "todo_time",
+          "label": "todo_time",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "hhgCcZNC4ywQ",
+            "gR0mkQpJ4Og8"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "now_time",
+          "label": "now_time",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "hhgCcZNC4ywQ",
+            "lSj2aYFBc9oU"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "qa5K8sytqWDP",
+      "name": "判断器#2",
+      "intro": "根据一定的条件，执行不同的分支。",
+      "avatar": "core/workflow/template/ifelse",
+      "flowNodeType": "ifElseNode",
+      "showStatus": true,
+      "position": {
+        "x": 4555.670908225322,
+        "y": -2025.1773480558127
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "ifElseList",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "label": "",
+          "value": [
+            {
+              "condition": "AND",
+              "list": [
+                {
+                  "variable": [
+                    "tKwoYVR4S9f3",
+                    "httpRawResponse"
+                  ],
+                  "condition": "equalTo",
+                  "value": "Todolist created successfully"
+                }
+              ]
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "ifElseResult",
+          "key": "ifElseResult",
+          "label": "workflow:judgment_result",
+          "valueType": "string",
+          "type": "static",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "zU1QA33u1Agl",
+      "name": "问题分类",
+      "intro": "根据用户的历史记录和当前问题判断该次提问的类型。可以添加多组问题类型，下面是一个模板例子：\n类型1: 打招呼\n类型2: 关于商品“使用”问题\n类型3: 关于商品“购买”问题\n类型4: 其他问题",
+      "avatar": "core/workflow/template/questionClassify",
+      "flowNodeType": "classifyQuestion",
+      "showStatus": true,
+      "position": {
+        "x": 588.3363297430619,
+        "y": -762.9686766373777
+      },
+      "version": "4.9.2",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "selectLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "required": true,
+          "valueType": "string",
+          "llmModelType": "classify",
+          "value": "glm",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.module.input.label.Background",
+          "description": "common:core.module.input.description.Background",
+          "placeholder": "common:core.module.input.placeholder.Classify background",
+          "value": "你是分类小助手",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "value": [
+            "pluginInput",
+            "question"
+          ],
+          "toolDescription": "用户输入的问题（问题需要完善）",
+          "debugLabel": ""
+        },
+        {
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "label": "",
+          "debugLabel": "",
+          "toolDescription": "",
+          "key": "agents",
+          "value": [
+            {
+              "value": "查询、咨询未完成的待办事项",
+              "key": "wqre"
+            },
+            {
+              "value": "查询、咨询已完成的待办事项",
+              "key": "sdfa"
+            },
+            {
+              "value": "新增、添加待办事项",
+              "key": "agex"
+            },
+            {
+              "value": "完成某个待办事项",
+              "key": "xUajTd8kYHkP"
+            },
+            {
+              "value": "放弃待办事项",
+              "key": "cqs56boJ6xQc"
+            },
+            {
+              "value": "撤销、恢复待办事项",
+              "key": "pWvP9cxdc9URFlQ2"
+            },
+            {
+              "value": "查询、咨询所有的待办事项",
+              "key": "u6eKBPBOte0BQGjY"
+            },
+            {
+              "value": "其他问题",
+              "key": "v9fy3whbttHsWJi1"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "cqResult",
+          "key": "cqResult",
+          "required": true,
+          "label": "workflow:classification_result",
+          "valueType": "string",
+          "type": "static",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "nOyvFmTIm0Ad",
+      "name": "变量更新",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 2911.0400779564516,
+        "y": -2803.5128621484496
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "status"
+              ],
+              "value": [
+                "",
+                "未完成"
+              ],
+              "valueType": "any",
+              "renderType": "input"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "cbIL3cW2xB1t",
+      "name": "变量更新#2",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 2981.4085845447016,
+        "y": -2435.650546999226
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "status"
+              ],
+              "value": [
+                "",
+                "已完成"
+              ],
+              "valueType": "any",
+              "renderType": "input"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "pIOIaETXUcqz",
+      "name": "AI 对话#2",
+      "intro": "AI 大模型对话",
+      "avatar": "core/workflow/template/aiChat",
+      "flowNodeType": "chatNode",
+      "showStatus": true,
+      "position": {
+        "x": 2604.1094642036614,
+        "y": -1979.0074909589443
+      },
+      "version": "4.9.7",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "settingLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "valueType": "string",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "temperature",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 0,
+          "valueType": "number",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "maxToken",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 2000,
+          "valueType": "number",
+          "min": 100,
+          "max": 4000,
+          "step": 50,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "isResponseAnswerText",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": false,
+          "valueType": "boolean",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatQuoteRole",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "system",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteTemplate",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quotePrompt",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatVision",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatReasoning",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatTopP",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "number",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatStopSign",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatResponseFormat",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatJsonSchema",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.ai.Prompt",
+          "description": "common:core.app.tip.systemPromptTip",
+          "placeholder": "common:core.app.tip.chatNodeSystemPromptTip",
+          "value": "请根据我的问题给我一个json串，严格按照如下格式输出：\n{\n    todo_item:我需要待办的事项,\n    todo_time:我需要待办的时间（可能需要根据当前时间计算，输出格式为YYYY-MM-DD HH:mm）\n}",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteQA",
+          "renderTypeList": [
+            "settingDatasetQuotePrompt"
+          ],
+          "label": "",
+          "debugLabel": "知识库引用",
+          "description": "",
+          "valueType": "datasetQuote",
+          "toolDescription": ""
+        },
+        {
+          "key": "fileUrlList",
+          "renderTypeList": [
+            "reference",
+            "input"
+          ],
+          "label": "app:workflow.user_file_input",
+          "debugLabel": "文件链接",
+          "description": "app:workflow.user_file_input_desc",
+          "valueType": "arrayString",
+          "toolDescription": "",
+          "value": []
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "toolDescription": "用户问题",
+          "value": [
+            "tI4rmmXfterL",
+            "system_text"
+          ],
+          "debugLabel": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "history",
+          "key": "history",
+          "required": true,
+          "label": "common:core.module.output.label.New context",
+          "description": "将本次回复内容拼接上历史记录，作为新的上下文返回",
+          "valueType": "chatHistory",
+          "type": "static",
+          "valueDesc": "{\n  obj: System | Human | AI;\n  value: string;\n}[]"
+        },
+        {
+          "id": "answerText",
+          "key": "answerText",
+          "required": true,
+          "label": "common:core.module.output.label.Ai response content",
+          "description": "将在 stream 回复完毕后触发",
+          "valueType": "string",
+          "type": "static"
+        },
+        {
+          "id": "reasoningText",
+          "key": "reasoningText",
+          "required": false,
+          "label": "workflow:reasoning_text",
+          "valueType": "string",
+          "type": "static",
+          "invalid": true,
+          "description": ""
+        },
+        {
+          "id": "system_error_text",
+          "key": "system_error_text",
+          "type": "error",
+          "valueType": "string",
+          "label": "workflow:error_text",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "hhgCcZNC4ywQ",
+      "name": "代码运行",
+      "intro": "执行一段简单的脚本代码，通常用于进行复杂的数据处理。",
+      "avatar": "core/workflow/template/codeRun",
+      "flowNodeType": "code",
+      "showStatus": true,
+      "position": {
+        "x": 3386.248173296479,
+        "y": -2034.3337330234588
+      },
+      "version": "482",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "workflow:these_variables_will_be_input_parameters_for_code_execution",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "codeType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": "js",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "code",
+          "renderTypeList": [
+            "custom"
+          ],
+          "label": "",
+          "value": "function main({json_data, time_string}){\n    // 去掉外部的反引号和换行符\n\tlet jsonDataStart = json_data.indexOf('{');\n\tlet jsonDataEnd = json_data.lastIndexOf('}');\n\tlet jsonData = json_data.substring(jsonDataStart, jsonDataEnd + 1);\n\n\t// 解析JSON字符串\n\tlet jsonObj = JSON.parse(jsonData);\n\n\tlet todoItem = jsonObj.todo_item;\n\tlet todoTime = jsonObj.todo_time;\n\n    // 使用正则表达式匹配日期时间部分\n    let dateTimeRegex = /\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/;\n    let dateTimeMatch = time_string.match(dateTimeRegex);\n    return {\n        todo_item: todoItem,\n        todo_time: todoTime,\n        now_time : dateTimeMatch[0]\n    }\n}",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "json_data",
+          "label": "json_data",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "pIOIaETXUcqz",
+            "answerText"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "time_string",
+          "label": "time_string",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "tYaxbKBdyx0u",
+            "time"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "system_rawResponse",
+          "key": "system_rawResponse",
+          "label": "workflow:full_response_data",
+          "valueType": "object",
+          "type": "static",
+          "description": ""
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "代码运行错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "description": "将代码中 return 的对象作为输出，传递给后续的节点。变量名需要对应 return 的 key"
+        },
+        {
+          "id": "qLUQfhG0ILRX",
+          "type": "dynamic",
+          "key": "todo_item",
+          "valueType": "string",
+          "label": "todo_item"
+        },
+        {
+          "id": "gR0mkQpJ4Og8",
+          "type": "dynamic",
+          "key": "todo_time",
+          "valueType": "string",
+          "label": "todo_time"
+        },
+        {
+          "id": "lSj2aYFBc9oU",
+          "valueType": "string",
+          "type": "dynamic",
+          "key": "now_time",
+          "label": "now_time"
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "jBScnzPJDJFU",
+      "name": "变量更新#3",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 6156.611914381783,
+        "y": -2968.9955482569576
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "result_answer"
+              ],
+              "value": [
+                "yvtdmsjsl0i2",
+                "answerText"
+              ],
+              "valueType": "any",
+              "renderType": "reference"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "wdoRBRE041xc",
+      "name": "变量更新#3#4",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 6612.622792904309,
+        "y": -1937.7574498651459
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "result_answer"
+              ],
+              "value": [
+                "lmdjwcMJCiOj",
+                "answerText"
+              ],
+              "valueType": "any",
+              "renderType": "reference"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "lmdjwcMJCiOj",
+      "name": "AI 对话#3",
+      "intro": "AI 大模型对话",
+      "avatar": "core/workflow/template/aiChat",
+      "flowNodeType": "chatNode",
+      "showStatus": true,
+      "position": {
+        "x": 5585.957259627245,
+        "y": -2229.5062527612513
+      },
+      "version": "4.9.7",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "settingLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "valueType": "string",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "temperature",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 0,
+          "valueType": "number",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "maxToken",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 2000,
+          "valueType": "number",
+          "min": 100,
+          "max": 4000,
+          "step": 50,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "isResponseAnswerText",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": true,
+          "valueType": "boolean",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatQuoteRole",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "system",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteTemplate",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quotePrompt",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatVision",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatReasoning",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatTopP",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "number",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatStopSign",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatResponseFormat",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatJsonSchema",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.ai.Prompt",
+          "description": "common:core.app.tip.systemPromptTip",
+          "placeholder": "common:core.app.tip.chatNodeSystemPromptTip",
+          "value": "提出的待办事项创建成功了，请以小助手的语气回复成功结果。\n例如：已为您创建了xx时间xxx的待办事项",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteQA",
+          "renderTypeList": [
+            "settingDatasetQuotePrompt"
+          ],
+          "label": "",
+          "debugLabel": "知识库引用",
+          "description": "",
+          "valueType": "datasetQuote",
+          "toolDescription": ""
+        },
+        {
+          "key": "fileUrlList",
+          "renderTypeList": [
+            "reference",
+            "input"
+          ],
+          "label": "app:workflow.user_file_input",
+          "debugLabel": "文件链接",
+          "description": "app:workflow.user_file_input_desc",
+          "valueType": "arrayString",
+          "toolDescription": "",
+          "value": []
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "toolDescription": "用户问题",
+          "value": [
+            "pluginInput",
+            "question"
+          ],
+          "debugLabel": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "history",
+          "key": "history",
+          "required": true,
+          "label": "common:core.module.output.label.New context",
+          "description": "将本次回复内容拼接上历史记录，作为新的上下文返回",
+          "valueType": "chatHistory",
+          "type": "static",
+          "valueDesc": "{\n  obj: System | Human | AI;\n  value: string;\n}[]"
+        },
+        {
+          "id": "answerText",
+          "key": "answerText",
+          "required": true,
+          "label": "common:core.module.output.label.Ai response content",
+          "description": "将在 stream 回复完毕后触发",
+          "valueType": "string",
+          "type": "static"
+        },
+        {
+          "id": "reasoningText",
+          "key": "reasoningText",
+          "required": false,
+          "label": "workflow:reasoning_text",
+          "valueType": "string",
+          "type": "static",
+          "invalid": true,
+          "description": ""
+        },
+        {
+          "id": "system_error_text",
+          "key": "system_error_text",
+          "type": "error",
+          "valueType": "string",
+          "label": "workflow:error_text",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "ofsARIJwB3PY",
+      "name": "指定回复",
+      "intro": "该模块可以直接回复一段指定的内容。常用于引导、提示。非字符串内容传入时，会转成字符串进行输出。",
+      "avatar": "core/workflow/template/reply",
+      "flowNodeType": "answerNode",
+      "position": {
+        "x": 4714.835696317185,
+        "y": -1489.0353576809587
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "text",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "valueType": "any",
+          "required": true,
+          "label": "common:core.module.input.label.Response content",
+          "description": "common:core.module.input.description.Response content",
+          "placeholder": "common:core.module.input.description.Response content",
+          "value": "回复异常",
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "cgYL3bAVq3BP",
+      "name": "指定回复#2",
+      "intro": "该模块可以直接回复一段指定的内容。常用于引导、提示。非字符串内容传入时，会转成字符串进行输出。",
+      "avatar": "core/workflow/template/reply",
+      "flowNodeType": "answerNode",
+      "position": {
+        "x": 1651.3287297607087,
+        "y": 791.0408181002031
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "text",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "valueType": "any",
+          "required": true,
+          "label": "common:core.module.input.label.Response content",
+          "description": "common:core.module.input.description.Response content",
+          "placeholder": "common:core.module.input.description.Response content",
+          "value": "不明白您的意思。可以重新解释一下吗？",
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "buJlYfxNbkO7",
+      "name": "变量更新#5",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 2150.8078502769413,
+        "y": -677.1010648974998
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "status"
+              ],
+              "value": [
+                "",
+                "未完成"
+              ],
+              "valueType": "any",
+              "renderType": "input"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "c4vDFv82TEpm",
+      "name": "HTTP 请求#3",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 2653.1094642036614,
+        "y": -845.4446799298537
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "GET",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [
+            {
+              "key": "status",
+              "type": "string",
+              "value": "{{status}}"
+            }
+          ],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "status",
+          "label": "status",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "pluginInput",
+            "status"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "iiuZTQA4F4Ji",
+      "name": "文本拼接#2#3",
+      "intro": "可对固定或传入的文本进行加工后输出，非字符串类型数据最终会转成字符串类型。",
+      "avatar": "core/workflow/template/textConcat",
+      "flowNodeType": "textEditor",
+      "position": {
+        "x": 3334.8303702481326,
+        "y": -607.1010648974998
+      },
+      "version": "486",
+      "inputs": [
+        {
+          "key": "system_textareaInput",
+          "renderTypeList": [
+            "textarea"
+          ],
+          "valueType": "string",
+          "required": true,
+          "label": "workflow:concatenation_text",
+          "placeholder": "workflow:input_variable_list",
+          "value": "json结果是：\n{{get_json}}\n{{my_question}}",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "可以引用其他节点的输出，作为文本拼接的变量，通过 {{字段名}} 来引用变量",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "get_json",
+          "label": "get_json",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "required": true,
+          "value": [
+            "c4vDFv82TEpm",
+            "httpRawResponse"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "my_question",
+          "label": "my_question",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "required": true,
+          "value": [
+            "tI4rmmXfterL",
+            "system_text"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "system_text",
+          "key": "system_text",
+          "label": "workflow:concatenation_result",
+          "type": "static",
+          "valueType": "string",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "dx9zOrNPm5Al",
+      "name": "AI 对话#4",
+      "intro": "AI 大模型对话",
+      "avatar": "core/workflow/template/aiChat",
+      "flowNodeType": "chatNode",
+      "showStatus": true,
+      "position": {
+        "x": 3939.7939642116203,
+        "y": -751.3312677146891
+      },
+      "version": "4.9.7",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "settingLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "valueType": "string",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "temperature",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 0,
+          "valueType": "number",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "maxToken",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 2000,
+          "valueType": "number",
+          "min": 100,
+          "max": 4000,
+          "step": 50,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "isResponseAnswerText",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": false,
+          "valueType": "boolean",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatQuoteRole",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "system",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteTemplate",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quotePrompt",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatVision",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatReasoning",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatTopP",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "number",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatStopSign",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatResponseFormat",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatJsonSchema",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.ai.Prompt",
+          "description": "common:core.app.tip.systemPromptTip",
+          "placeholder": "common:core.app.tip.chatNodeSystemPromptTip",
+          "value": "请提取出我刚刚提出完成事项的待办事项ID值，不需要解释过程，直接返回ID值给我。\n如果没找到就返回指定回复给我。",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteQA",
+          "renderTypeList": [
+            "settingDatasetQuotePrompt"
+          ],
+          "label": "",
+          "debugLabel": "知识库引用",
+          "description": "",
+          "valueType": "datasetQuote",
+          "toolDescription": ""
+        },
+        {
+          "key": "fileUrlList",
+          "renderTypeList": [
+            "reference",
+            "input"
+          ],
+          "label": "app:workflow.user_file_input",
+          "debugLabel": "文件链接",
+          "description": "app:workflow.user_file_input_desc",
+          "valueType": "arrayString",
+          "toolDescription": "",
+          "value": []
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "toolDescription": "用户问题",
+          "value": [
+            "iiuZTQA4F4Ji",
+            "system_text"
+          ],
+          "debugLabel": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "history",
+          "key": "history",
+          "required": true,
+          "label": "common:core.module.output.label.New context",
+          "description": "将本次回复内容拼接上历史记录，作为新的上下文返回",
+          "valueType": "chatHistory",
+          "type": "static",
+          "valueDesc": "{\n  obj: System | Human | AI;\n  value: string;\n}[]"
+        },
+        {
+          "id": "answerText",
+          "key": "answerText",
+          "required": true,
+          "label": "common:core.module.output.label.Ai response content",
+          "description": "将在 stream 回复完毕后触发",
+          "valueType": "string",
+          "type": "static"
+        },
+        {
+          "id": "reasoningText",
+          "key": "reasoningText",
+          "required": false,
+          "label": "workflow:reasoning_text",
+          "valueType": "string",
+          "type": "static",
+          "invalid": true,
+          "description": ""
+        },
+        {
+          "id": "system_error_text",
+          "key": "system_error_text",
+          "type": "error",
+          "valueType": "string",
+          "label": "workflow:error_text",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "m2YmwmKcIzyT",
+      "name": "判断器#2",
+      "intro": "根据一定的条件，执行不同的分支。",
+      "avatar": "core/workflow/template/ifelse",
+      "flowNodeType": "ifElseNode",
+      "showStatus": true,
+      "position": {
+        "x": 4647.352322471974,
+        "y": -629.6872577732327
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "ifElseList",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "label": "",
+          "value": [
+            {
+              "condition": "AND",
+              "list": [
+                {
+                  "variable": [
+                    "dx9zOrNPm5Al",
+                    "answerText"
+                  ],
+                  "condition": "reg",
+                  "value": "/^\\d+$/"
+                }
+              ]
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "ifElseResult",
+          "key": "ifElseResult",
+          "label": "workflow:judgment_result",
+          "valueType": "string",
+          "type": "static",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "fDwHVyQJoHxo",
+      "name": "HTTP 请求#4",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 7340.809988626582,
+        "y": -1852.2967506936604
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "PUT",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "{\r\n    \"todolist_id\": \"{{id}}\",\r\n    \"status\": \"已完成\",\r\n    \"do_time\": \"{{do_time}}\"\r\n}",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "id",
+          "label": "id",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "dx9zOrNPm5Al",
+            "answerText"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "do_time",
+          "label": "do_time",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "vaEuMHc1h9db",
+            "lSj2aYFBc9oU"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        },
+        {
+          "id": "meJj5UMMBu2ND2T9",
+          "valueType": "string",
+          "type": "dynamic",
+          "key": "status",
+          "label": "status"
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "vaEuMHc1h9db",
+      "name": "代码运行#2",
+      "intro": "执行一段简单的脚本代码，通常用于进行复杂的数据处理。",
+      "avatar": "core/workflow/template/codeRun",
+      "flowNodeType": "code",
+      "showStatus": true,
+      "position": {
+        "x": 5756.611914381783,
+        "y": -1015.5645182863628
+      },
+      "version": "482",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "workflow:these_variables_will_be_input_parameters_for_code_execution",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "codeType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": "js",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "code",
+          "renderTypeList": [
+            "custom"
+          ],
+          "label": "",
+          "value": "function main({time_string}){\n    \n    // 使用正则表达式匹配日期时间部分\n    let dateTimeRegex = /\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}/;\n    let dateTimeMatch = time_string.match(dateTimeRegex);\n    return {\n        now_time : dateTimeMatch[0]\n    }\n}",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "time_string",
+          "label": "time_string",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "tYaxbKBdyx0u",
+            "time"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "system_rawResponse",
+          "key": "system_rawResponse",
+          "label": "workflow:full_response_data",
+          "valueType": "object",
+          "type": "static",
+          "description": ""
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "代码运行错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "description": "将代码中 return 的对象作为输出，传递给后续的节点。变量名需要对应 return 的 key"
+        },
+        {
+          "id": "lSj2aYFBc9oU",
+          "valueType": "string",
+          "type": "dynamic",
+          "key": "now_time",
+          "label": "now_time"
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "rNVzEk3lWHV5",
+      "name": "判断器#2#3",
+      "intro": "根据一定的条件，执行不同的分支。",
+      "avatar": "core/workflow/template/ifelse",
+      "flowNodeType": "ifElseNode",
+      "showStatus": true,
+      "position": {
+        "x": 8568.733817942535,
+        "y": -1106.7967506936604
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "ifElseList",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "label": "",
+          "value": [
+            {
+              "condition": "OR",
+              "list": [
+                {
+                  "variable": [
+                    "fDwHVyQJoHxo",
+                    "httpRawResponse"
+                  ],
+                  "condition": "equalTo",
+                  "value": "Todolist updated successfully"
+                },
+                {
+                  "variable": [
+                    "cto9SvsjRDc0JUeT",
+                    "httpRawResponse"
+                  ],
+                  "condition": "equalTo",
+                  "value": "Todolist updated successfully",
+                  "valueType": "input"
+                }
+              ]
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "ifElseResult",
+          "key": "ifElseResult",
+          "label": "workflow:judgment_result",
+          "valueType": "string",
+          "type": "static",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "xg7VmHKiTdhP",
+      "name": "AI 对话#3#5",
+      "intro": "AI 大模型对话",
+      "avatar": "core/workflow/template/aiChat",
+      "flowNodeType": "chatNode",
+      "showStatus": true,
+      "position": {
+        "x": 9386.712510414936,
+        "y": -1420.5688128935494
+      },
+      "version": "4.9.7",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "settingLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "valueType": "string",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "temperature",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 0,
+          "valueType": "number",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "maxToken",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 2000,
+          "valueType": "number",
+          "min": 100,
+          "max": 4000,
+          "step": 50,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "isResponseAnswerText",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": true,
+          "valueType": "boolean",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatQuoteRole",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "system",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteTemplate",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quotePrompt",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatVision",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatReasoning",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatTopP",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "number",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatStopSign",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatResponseFormat",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatJsonSchema",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.ai.Prompt",
+          "description": "common:core.app.tip.systemPromptTip",
+          "placeholder": "common:core.app.tip.chatNodeSystemPromptTip",
+          "value": "提出的待办事项置为{{$fDwHVyQJoHxo.meJj5UMMBu2ND2T9$}}或{{$cto9SvsjRDc0JUeT.idqAerjdVIFUjezX$}}，请以小助手的语气回复成功完成修改状态的请求。",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteQA",
+          "renderTypeList": [
+            "settingDatasetQuotePrompt"
+          ],
+          "label": "",
+          "debugLabel": "知识库引用",
+          "description": "",
+          "valueType": "datasetQuote",
+          "toolDescription": ""
+        },
+        {
+          "key": "fileUrlList",
+          "renderTypeList": [
+            "reference",
+            "input"
+          ],
+          "label": "app:workflow.user_file_input",
+          "debugLabel": "文件链接",
+          "description": "app:workflow.user_file_input_desc",
+          "valueType": "arrayString",
+          "toolDescription": "",
+          "value": []
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "toolDescription": "用户问题",
+          "value": [
+            "pluginInput",
+            "question"
+          ],
+          "debugLabel": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "history",
+          "key": "history",
+          "required": true,
+          "label": "common:core.module.output.label.New context",
+          "description": "将本次回复内容拼接上历史记录，作为新的上下文返回",
+          "valueType": "chatHistory",
+          "type": "static",
+          "valueDesc": "{\n  obj: System | Human | AI;\n  value: string;\n}[]"
+        },
+        {
+          "id": "answerText",
+          "key": "answerText",
+          "required": true,
+          "label": "common:core.module.output.label.Ai response content",
+          "description": "将在 stream 回复完毕后触发",
+          "valueType": "string",
+          "type": "static"
+        },
+        {
+          "id": "reasoningText",
+          "key": "reasoningText",
+          "required": false,
+          "label": "workflow:reasoning_text",
+          "valueType": "string",
+          "type": "static",
+          "invalid": true,
+          "description": ""
+        },
+        {
+          "id": "system_error_text",
+          "key": "system_error_text",
+          "type": "error",
+          "valueType": "string",
+          "label": "workflow:error_text",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "irBuoQUAqBaE",
+      "name": "变量更新#3#4#6",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 10123.893717084335,
+        "y": -1456.5374361442691
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "result_answer"
+              ],
+              "value": [
+                "xg7VmHKiTdhP",
+                "answerText"
+              ],
+              "valueType": "any",
+              "renderType": "reference"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "tOKoayBD92TVc435",
+      "name": "变量更新#7",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 2911.0400779564516,
+        "y": -3146.729832064676
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "status"
+              ],
+              "value": [
+                "",
+                ""
+              ],
+              "valueType": "any",
+              "renderType": "input"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "hqCL4qatKAuV4Tmm",
+      "name": "变量更新#8",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 2138.063954776888,
+        "y": -317.0359145025043
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "status"
+              ],
+              "value": [
+                "",
+                "未完成"
+              ],
+              "valueType": "any",
+              "renderType": "input"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "bIRbXLL40aCeFEXT",
+      "name": "问题分类#2",
+      "intro": "根据用户的历史记录和当前问题判断该次提问的类型。可以添加多组问题类型，下面是一个模板例子:\n类型1: 打招呼\n类型2: 关于商品“使用”问题\n类型3: 关于商品“购买”问题\n类型4: 其他问题",
+      "avatar": "core/workflow/template/questionClassify",
+      "flowNodeType": "classifyQuestion",
+      "showStatus": true,
+      "position": {
+        "x": 6365.8280976803,
+        "y": -961.4311185165399
+      },
+      "version": "4.9.2",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "selectLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "required": true,
+          "valueType": "string",
+          "llmModelType": "classify",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.module.input.label.Background",
+          "description": "common:core.module.input.description.Background",
+          "placeholder": "common:core.module.input.placeholder.Classify background",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 0,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "toolDescription": "用户输入的问题（问题需要完善）",
+          "required": true,
+          "value": [
+            "pluginInput",
+            "question"
+          ],
+          "debugLabel": ""
+        },
+        {
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "label": "",
+          "key": "agents",
+          "value": [
+            {
+              "value": "已完成",
+              "key": "wqre"
+            },
+            {
+              "value": "已废除",
+              "key": "sdfa"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "cqResult",
+          "key": "cqResult",
+          "required": true,
+          "label": "workflow:classification_result",
+          "valueType": "string",
+          "type": "static",
+          "valueDesc": "",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "nodeId": "cto9SvsjRDc0JUeT",
+      "name": "HTTP 请求#7",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 7362.603976866817,
+        "y": -482.5688128935494
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "PUT",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist/abandon",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "{\r\n    \"todolist_id\": \"{{id}}\",\r\n    \"status\": \"已放弃\",\r\n    \"abandon_time\": \"{{abandon_time}}\"\r\n}",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "id",
+          "label": "id",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "dx9zOrNPm5Al",
+            "answerText"
+          ]
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "abandon_time",
+          "label": "abandon_time",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "vaEuMHc1h9db",
+            "lSj2aYFBc9oU"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        },
+        {
+          "id": "idqAerjdVIFUjezX",
+          "valueType": "string",
+          "type": "dynamic",
+          "key": "status",
+          "label": "status"
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "oZGVlZ8kYjnjIuYS",
+      "name": "指定回复#3",
+      "intro": "该模块可以直接回复一段指定的内容。常用于引导、提示。非字符串内容传入时，会转成字符串进行输出。",
+      "avatar": "core/workflow/template/reply",
+      "flowNodeType": "answerNode",
+      "position": {
+        "x": 5605.62185310711,
+        "y": -126.43111851653987
+      },
+      "inputs": [
+        {
+          "key": "text",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "valueType": "any",
+          "required": true,
+          "label": "common:core.module.input.label.Response content",
+          "description": "common:core.module.input.description.Response content",
+          "placeholder": "common:core.module.input.description.Response content",
+          "value": "未找到您所说的事项",
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "lXld8S1Y8M92IPfR",
+      "name": "变量更新#9",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 1897.6915961738991,
+        "y": 452.36539639477496
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "status"
+              ],
+              "value": [
+                "",
+                ""
+              ],
+              "valueType": "any",
+              "renderType": "input"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "nodeId": "aztqVZlMYzw7GLO5",
+      "name": "HTTP 请求#6",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 2482.7718051644,
+        "y": 203.04081810020284
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "GET",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist/all",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [
+            {
+              "key": "status",
+              "type": "string",
+              "value": "{{status}}"
+            }
+          ],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "status",
+          "label": "status",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "pluginInput",
+            "status"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "nsjS0kRv5UxbwvvI",
+      "name": "代码运行#3",
+      "intro": "执行一段简单的脚本代码，通常用于进行复杂的数据处理。",
+      "avatar": "core/workflow/template/codeRun",
+      "flowNodeType": "code",
+      "showStatus": true,
+      "position": {
+        "x": 3310.978225964075,
+        "y": 247.54081810020284
+      },
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "workflow:these_variables_will_be_input_parameters_for_code_execution",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "codeType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "js",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "code",
+          "renderTypeList": [
+            "custom"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "function main({ tasks }) {\n  if (!tasks || tasks.length === 0) {\n    throw new Error(\"没有找到任何任务\");\n  }\n  \n  // 找到最新任务\n  const latestTask = tasks.reduce((latest, current) => \n    new Date(current.created_time) > new Date(latest.created_time) ? current : latest\n  );\n  \n  // 直接返回ID，FastGPT会自动作为输出\n  return latestTask.id;\n}\n",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "data1",
+          "label": "data1",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "aztqVZlMYzw7GLO5",
+            "httpRawResponse"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "system_rawResponse",
+          "key": "system_rawResponse",
+          "label": "workflow:full_response_data",
+          "valueType": "object",
+          "type": "static",
+          "valueDesc": "",
+          "description": ""
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "valueType": "string",
+          "type": "error",
+          "valueDesc": "",
+          "description": ""
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          },
+          "description": "将代码中 return 的对象作为输出，传递给后续的节点。变量名需要对应 return 的 key",
+          "valueDesc": ""
+        },
+        {
+          "id": "qLUQfhG0ILRX",
+          "type": "dynamic",
+          "key": "ID",
+          "valueType": "string",
+          "label": "ID",
+          "valueDesc": "",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "wwd2tQpsjspv8p3V",
+      "name": "HTTP 请求#7",
+      "intro": "可以发出一个 HTTP 请求，实现更为复杂的操作（联网搜索、数据库查询等）",
+      "avatar": "core/workflow/template/httpRequest",
+      "flowNodeType": "httpRequest468",
+      "showStatus": true,
+      "position": {
+        "x": 3915.351594918341,
+        "y": 232.61666648519224
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "system_addInputParam",
+          "renderTypeList": [
+            "addInputParam"
+          ],
+          "valueType": "dynamic",
+          "label": "",
+          "required": false,
+          "description": "common:core.module.input.description.HTTP Dynamic Input",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpMethod",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "string",
+          "label": "",
+          "value": "PUT",
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpTimeout",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "number",
+          "label": "",
+          "value": 30,
+          "min": 5,
+          "max": 600,
+          "required": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpReqUrl",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Url",
+          "placeholder": "https://api.ai.com/getInventory",
+          "required": false,
+          "value": "http://host.docker.internal:5000/todolist/restore",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_header_secret",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "object",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpHeader",
+          "renderTypeList": [
+            "custom"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "description": "common:core.module.input.description.Http Request Header",
+          "placeholder": "common:core.module.input.description.Http Request Header",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpParams",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpJsonBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": "{\r\n    \"todolist_id\": \"{{id}}\",\r\n    \"status\": \"未完成\"\n\r\n}",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpFormBody",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "any",
+          "value": [],
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "system_httpContentType",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "valueType": "string",
+          "value": "json",
+          "label": "",
+          "required": false,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "renderTypeList": [
+            "reference"
+          ],
+          "valueType": "string",
+          "canEdit": true,
+          "key": "id",
+          "label": "id",
+          "customInputConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "arrayAny",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectDataset",
+              "selectApp"
+            ],
+            "showDescription": false,
+            "showDefaultValue": true
+          },
+          "required": true,
+          "value": [
+            "nsjS0kRv5UxbwvvI",
+            "qLUQfhG0ILRX"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "httpRawResponse",
+          "key": "httpRawResponse",
+          "label": "workflow:raw_response",
+          "required": true,
+          "description": "HTTP请求的原始响应。只能接受字符串或JSON类型响应数据。",
+          "valueType": "any",
+          "type": "static"
+        },
+        {
+          "id": "error",
+          "key": "error",
+          "label": "workflow:error_text",
+          "description": "HTTP请求错误信息，成功时返回空",
+          "valueType": "string",
+          "type": "error"
+        },
+        {
+          "id": "system_addOutputParam",
+          "key": "system_addOutputParam",
+          "type": "dynamic",
+          "valueType": "dynamic",
+          "label": "",
+          "customFieldConfig": {
+            "selectValueTypeList": [
+              "string",
+              "number",
+              "boolean",
+              "object",
+              "arrayString",
+              "arrayNumber",
+              "arrayBoolean",
+              "arrayObject",
+              "any",
+              "chatHistory",
+              "datasetQuote",
+              "dynamic",
+              "selectApp",
+              "selectDataset"
+            ],
+            "showDescription": false,
+            "showDefaultValue": false
+          }
+        },
+        {
+          "id": "meJj5UMMBu2ND2T9",
+          "valueType": "string",
+          "type": "dynamic",
+          "key": "todo",
+          "label": "todo"
+        },
+        {
+          "id": "xhLNzPz1h2LVFfmC",
+          "valueType": "string",
+          "type": "dynamic",
+          "key": "todo_time",
+          "label": "todo_time"
+        }
+      ],
+      "catchError": true
+    },
+    {
+      "nodeId": "zbCUS7Derij45SyZ",
+      "name": "AI 对话#3#6",
+      "intro": "AI 大模型对话",
+      "avatar": "core/workflow/template/aiChat",
+      "flowNodeType": "chatNode",
+      "showStatus": true,
+      "position": {
+        "x": 4836.680523385404,
+        "y": 520.286320586939
+      },
+      "version": "4.9.7",
+      "inputs": [
+        {
+          "key": "model",
+          "renderTypeList": [
+            "settingLLMModel",
+            "reference"
+          ],
+          "label": "common:core.module.input.label.aiModel",
+          "valueType": "string",
+          "value": "qwen-max",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "temperature",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 0,
+          "valueType": "number",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "maxToken",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": 2000,
+          "valueType": "number",
+          "min": 100,
+          "max": 4000,
+          "step": 50,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "isResponseAnswerText",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "value": true,
+          "valueType": "boolean",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatQuoteRole",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "value": "system",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteTemplate",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quotePrompt",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatVision",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatReasoning",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "boolean",
+          "value": true,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatTopP",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "number",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatStopSign",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatResponseFormat",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "aiChatJsonSchema",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "label": "",
+          "valueType": "string",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "systemPrompt",
+          "renderTypeList": [
+            "textarea",
+            "reference"
+          ],
+          "max": 3000,
+          "valueType": "string",
+          "label": "common:core.ai.Prompt",
+          "description": "common:core.app.tip.systemPromptTip",
+          "placeholder": "common:core.app.tip.chatNodeSystemPromptTip",
+          "value": "撤销修改完成了，请以小助手的语气回复成功结果。\n例如：已为您恢复{{$wwd2tQpsjspv8p3V.xhLNzPz1h2LVFfmC$}}时间{{$wwd2tQpsjspv8p3V.meJj5UMMBu2ND2T9$}}的待办事项状态为“未完成”",
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "history",
+          "renderTypeList": [
+            "numberInput",
+            "reference"
+          ],
+          "valueType": "chatHistory",
+          "label": "common:core.module.input.label.chat history",
+          "description": "workflow:max_dialog_rounds",
+          "required": true,
+          "min": 0,
+          "max": 50,
+          "value": 6,
+          "debugLabel": "",
+          "toolDescription": ""
+        },
+        {
+          "key": "quoteQA",
+          "renderTypeList": [
+            "settingDatasetQuotePrompt"
+          ],
+          "label": "",
+          "debugLabel": "知识库引用",
+          "description": "",
+          "valueType": "datasetQuote",
+          "toolDescription": ""
+        },
+        {
+          "key": "fileUrlList",
+          "renderTypeList": [
+            "reference",
+            "input"
+          ],
+          "label": "app:workflow.user_file_input",
+          "debugLabel": "文件链接",
+          "description": "app:workflow.user_file_input_desc",
+          "valueType": "arrayString",
+          "toolDescription": "",
+          "value": []
+        },
+        {
+          "key": "userChatInput",
+          "renderTypeList": [
+            "reference",
+            "textarea"
+          ],
+          "valueType": "string",
+          "label": "workflow:user_question",
+          "required": true,
+          "toolDescription": "用户问题",
+          "value": [
+            "pluginInput",
+            "question"
+          ],
+          "debugLabel": ""
+        }
+      ],
+      "outputs": [
+        {
+          "id": "history",
+          "key": "history",
+          "required": true,
+          "label": "common:core.module.output.label.New context",
+          "description": "将本次回复内容拼接上历史记录，作为新的上下文返回",
+          "valueType": "chatHistory",
+          "type": "static",
+          "valueDesc": "{\n  obj: System | Human | AI;\n  value: string;\n}[]"
+        },
+        {
+          "id": "answerText",
+          "key": "answerText",
+          "required": true,
+          "label": "common:core.module.output.label.Ai response content",
+          "description": "将在 stream 回复完毕后触发",
+          "valueType": "string",
+          "type": "static"
+        },
+        {
+          "id": "reasoningText",
+          "key": "reasoningText",
+          "required": false,
+          "label": "workflow:reasoning_text",
+          "valueType": "string",
+          "type": "static",
+          "invalid": true,
+          "description": ""
+        },
+        {
+          "id": "system_error_text",
+          "key": "system_error_text",
+          "type": "error",
+          "valueType": "string",
+          "label": "workflow:error_text",
+          "description": ""
+        }
+      ],
+      "catchError": false
+    },
+    {
+      "nodeId": "zD51BKiLGzaFsTiZ",
+      "name": "变量更新#3#4#10",
+      "intro": "可以更新指定节点的输出值或更新全局变量",
+      "avatar": "core/workflow/template/variableUpdate",
+      "flowNodeType": "variableUpdate",
+      "showStatus": false,
+      "position": {
+        "x": 5984.111914381783,
+        "y": 1111.786320586939
+      },
+      "version": "481",
+      "inputs": [
+        {
+          "key": "updateList",
+          "valueType": "any",
+          "label": "",
+          "renderTypeList": [
+            "hidden"
+          ],
+          "value": [
+            {
+              "variable": [
+                "pluginInput",
+                "result_answer"
+              ],
+              "value": [
+                "zbCUS7Derij45SyZ",
+                "answerText"
+              ],
+              "valueType": "any",
+              "renderType": "reference"
+            }
+          ],
+          "debugLabel": "",
+          "toolDescription": ""
+        }
+      ],
+      "outputs": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "pluginInput",
+      "target": "tYaxbKBdyx0u",
+      "sourceHandle": "pluginInput-source-right",
+      "targetHandle": "tYaxbKBdyx0u-target-left"
+    },
+    {
+      "source": "tYaxbKBdyx0u",
+      "target": "tI4rmmXfterL",
+      "sourceHandle": "tYaxbKBdyx0u-source-right",
+      "targetHandle": "tI4rmmXfterL-target-left"
+    },
+    {
+      "source": "wSy003yLgPos",
+      "target": "rCK3GJxrJvZf",
+      "sourceHandle": "wSy003yLgPos-source-right",
+      "targetHandle": "rCK3GJxrJvZf-target-left"
+    },
+    {
+      "source": "rCK3GJxrJvZf",
+      "target": "yvtdmsjsl0i2",
+      "sourceHandle": "rCK3GJxrJvZf-source-right",
+      "targetHandle": "yvtdmsjsl0i2-target-left"
+    },
+    {
+      "source": "tKwoYVR4S9f3",
+      "target": "qa5K8sytqWDP",
+      "sourceHandle": "tKwoYVR4S9f3-source-right",
+      "targetHandle": "qa5K8sytqWDP-target-left"
+    },
+    {
+      "source": "tI4rmmXfterL",
+      "target": "zU1QA33u1Agl",
+      "sourceHandle": "tI4rmmXfterL-source-right",
+      "targetHandle": "zU1QA33u1Agl-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "nOyvFmTIm0Ad",
+      "sourceHandle": "zU1QA33u1Agl-source-wqre",
+      "targetHandle": "nOyvFmTIm0Ad-target-left"
+    },
+    {
+      "source": "nOyvFmTIm0Ad",
+      "target": "wSy003yLgPos",
+      "sourceHandle": "nOyvFmTIm0Ad-source-right",
+      "targetHandle": "wSy003yLgPos-target-left"
+    },
+    {
+      "source": "cbIL3cW2xB1t",
+      "target": "wSy003yLgPos",
+      "sourceHandle": "cbIL3cW2xB1t-source-right",
+      "targetHandle": "wSy003yLgPos-target-left"
+    },
+    {
+      "source": "hhgCcZNC4ywQ",
+      "target": "tKwoYVR4S9f3",
+      "sourceHandle": "hhgCcZNC4ywQ-source-right",
+      "targetHandle": "tKwoYVR4S9f3-target-left"
+    },
+    {
+      "source": "yvtdmsjsl0i2",
+      "target": "jBScnzPJDJFU",
+      "sourceHandle": "yvtdmsjsl0i2-source-right",
+      "targetHandle": "jBScnzPJDJFU-target-left"
+    },
+    {
+      "source": "jBScnzPJDJFU",
+      "target": "pluginOutput",
+      "sourceHandle": "jBScnzPJDJFU-source-right",
+      "targetHandle": "pluginOutput-target-left"
+    },
+    {
+      "source": "wdoRBRE041xc",
+      "target": "pluginOutput",
+      "sourceHandle": "wdoRBRE041xc-source-right",
+      "targetHandle": "pluginOutput-target-left"
+    },
+    {
+      "source": "qa5K8sytqWDP",
+      "target": "lmdjwcMJCiOj",
+      "sourceHandle": "qa5K8sytqWDP-source-IF",
+      "targetHandle": "lmdjwcMJCiOj-target-left"
+    },
+    {
+      "source": "lmdjwcMJCiOj",
+      "target": "wdoRBRE041xc",
+      "sourceHandle": "lmdjwcMJCiOj-source-right",
+      "targetHandle": "wdoRBRE041xc-target-left"
+    },
+    {
+      "source": "qa5K8sytqWDP",
+      "target": "ofsARIJwB3PY",
+      "sourceHandle": "qa5K8sytqWDP-source-ELSE",
+      "targetHandle": "ofsARIJwB3PY-target-left"
+    },
+    {
+      "source": "buJlYfxNbkO7",
+      "target": "c4vDFv82TEpm",
+      "sourceHandle": "buJlYfxNbkO7-source-right",
+      "targetHandle": "c4vDFv82TEpm-target-left"
+    },
+    {
+      "source": "c4vDFv82TEpm",
+      "target": "iiuZTQA4F4Ji",
+      "sourceHandle": "c4vDFv82TEpm-source-right",
+      "targetHandle": "iiuZTQA4F4Ji-target-left"
+    },
+    {
+      "source": "iiuZTQA4F4Ji",
+      "target": "dx9zOrNPm5Al",
+      "sourceHandle": "iiuZTQA4F4Ji-source-right",
+      "targetHandle": "dx9zOrNPm5Al-target-left"
+    },
+    {
+      "source": "m2YmwmKcIzyT",
+      "target": "vaEuMHc1h9db",
+      "sourceHandle": "m2YmwmKcIzyT-source-IF",
+      "targetHandle": "vaEuMHc1h9db-target-left"
+    },
+    {
+      "source": "fDwHVyQJoHxo",
+      "target": "rNVzEk3lWHV5",
+      "sourceHandle": "fDwHVyQJoHxo-source-right",
+      "targetHandle": "rNVzEk3lWHV5-target-left"
+    },
+    {
+      "source": "rNVzEk3lWHV5",
+      "target": "xg7VmHKiTdhP",
+      "sourceHandle": "rNVzEk3lWHV5-source-IF",
+      "targetHandle": "xg7VmHKiTdhP-target-left"
+    },
+    {
+      "source": "xg7VmHKiTdhP",
+      "target": "irBuoQUAqBaE",
+      "sourceHandle": "xg7VmHKiTdhP-source-right",
+      "targetHandle": "irBuoQUAqBaE-target-left"
+    },
+    {
+      "source": "irBuoQUAqBaE",
+      "target": "pluginOutput",
+      "sourceHandle": "irBuoQUAqBaE-source-right",
+      "targetHandle": "pluginOutput-target-left"
+    },
+    {
+      "source": "dx9zOrNPm5Al",
+      "target": "m2YmwmKcIzyT",
+      "sourceHandle": "dx9zOrNPm5Al-source-right",
+      "targetHandle": "m2YmwmKcIzyT-target-left"
+    },
+    {
+      "source": "wSy003yLgPos",
+      "target": "rCK3GJxrJvZf",
+      "sourceHandle": "wSy003yLgPos-source_catch-right",
+      "targetHandle": "rCK3GJxrJvZf-target-left"
+    },
+    {
+      "source": "tKwoYVR4S9f3",
+      "target": "qa5K8sytqWDP",
+      "sourceHandle": "tKwoYVR4S9f3-source_catch-right",
+      "targetHandle": "qa5K8sytqWDP-target-left"
+    },
+    {
+      "source": "hhgCcZNC4ywQ",
+      "target": "tKwoYVR4S9f3",
+      "sourceHandle": "hhgCcZNC4ywQ-source_catch-right",
+      "targetHandle": "tKwoYVR4S9f3-target-left"
+    },
+    {
+      "source": "c4vDFv82TEpm",
+      "target": "iiuZTQA4F4Ji",
+      "sourceHandle": "c4vDFv82TEpm-source_catch-right",
+      "targetHandle": "iiuZTQA4F4Ji-target-left"
+    },
+    {
+      "source": "fDwHVyQJoHxo",
+      "target": "rNVzEk3lWHV5",
+      "sourceHandle": "fDwHVyQJoHxo-source_catch-right",
+      "targetHandle": "rNVzEk3lWHV5-target-left"
+    },
+    {
+      "source": "pIOIaETXUcqz",
+      "target": "hhgCcZNC4ywQ",
+      "sourceHandle": "pIOIaETXUcqz-source-right",
+      "targetHandle": "hhgCcZNC4ywQ-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "cgYL3bAVq3BP",
+      "sourceHandle": "zU1QA33u1Agl-source-v9fy3whbttHsWJi1",
+      "targetHandle": "cgYL3bAVq3BP-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "pIOIaETXUcqz",
+      "sourceHandle": "zU1QA33u1Agl-source-agex",
+      "targetHandle": "pIOIaETXUcqz-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "cbIL3cW2xB1t",
+      "sourceHandle": "zU1QA33u1Agl-source-sdfa",
+      "targetHandle": "cbIL3cW2xB1t-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "buJlYfxNbkO7",
+      "sourceHandle": "zU1QA33u1Agl-source-xUajTd8kYHkP",
+      "targetHandle": "buJlYfxNbkO7-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "tOKoayBD92TVc435",
+      "sourceHandle": "zU1QA33u1Agl-source-u6eKBPBOte0BQGjY",
+      "targetHandle": "tOKoayBD92TVc435-target-left"
+    },
+    {
+      "source": "tOKoayBD92TVc435",
+      "target": "wSy003yLgPos",
+      "sourceHandle": "tOKoayBD92TVc435-source-right",
+      "targetHandle": "wSy003yLgPos-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "hqCL4qatKAuV4Tmm",
+      "sourceHandle": "zU1QA33u1Agl-source-cqs56boJ6xQc",
+      "targetHandle": "hqCL4qatKAuV4Tmm-target-left"
+    },
+    {
+      "source": "vaEuMHc1h9db",
+      "target": "bIRbXLL40aCeFEXT",
+      "sourceHandle": "vaEuMHc1h9db-source-right",
+      "targetHandle": "bIRbXLL40aCeFEXT-target-left"
+    },
+    {
+      "source": "vaEuMHc1h9db",
+      "target": "bIRbXLL40aCeFEXT",
+      "sourceHandle": "vaEuMHc1h9db-source_catch-right",
+      "targetHandle": "bIRbXLL40aCeFEXT-target-left"
+    },
+    {
+      "source": "bIRbXLL40aCeFEXT",
+      "target": "fDwHVyQJoHxo",
+      "sourceHandle": "bIRbXLL40aCeFEXT-source-wqre",
+      "targetHandle": "fDwHVyQJoHxo-target-left"
+    },
+    {
+      "source": "bIRbXLL40aCeFEXT",
+      "target": "cto9SvsjRDc0JUeT",
+      "sourceHandle": "bIRbXLL40aCeFEXT-source-sdfa",
+      "targetHandle": "cto9SvsjRDc0JUeT-target-left"
+    },
+    {
+      "source": "cto9SvsjRDc0JUeT",
+      "target": "rNVzEk3lWHV5",
+      "sourceHandle": "cto9SvsjRDc0JUeT-source-right",
+      "targetHandle": "rNVzEk3lWHV5-target-left"
+    },
+    {
+      "source": "cto9SvsjRDc0JUeT",
+      "target": "rNVzEk3lWHV5",
+      "sourceHandle": "cto9SvsjRDc0JUeT-source_catch-right",
+      "targetHandle": "rNVzEk3lWHV5-target-left"
+    },
+    {
+      "source": "m2YmwmKcIzyT",
+      "target": "oZGVlZ8kYjnjIuYS",
+      "sourceHandle": "m2YmwmKcIzyT-source-ELSE",
+      "targetHandle": "oZGVlZ8kYjnjIuYS-target-left"
+    },
+    {
+      "source": "hqCL4qatKAuV4Tmm",
+      "target": "c4vDFv82TEpm",
+      "sourceHandle": "hqCL4qatKAuV4Tmm-source-right",
+      "targetHandle": "c4vDFv82TEpm-target-left"
+    },
+    {
+      "source": "zU1QA33u1Agl",
+      "target": "lXld8S1Y8M92IPfR",
+      "sourceHandle": "zU1QA33u1Agl-source-pWvP9cxdc9URFlQ2",
+      "targetHandle": "lXld8S1Y8M92IPfR-target-left"
+    },
+    {
+      "source": "lXld8S1Y8M92IPfR",
+      "target": "aztqVZlMYzw7GLO5",
+      "sourceHandle": "lXld8S1Y8M92IPfR-source-right",
+      "targetHandle": "aztqVZlMYzw7GLO5-target-left"
+    },
+    {
+      "source": "aztqVZlMYzw7GLO5",
+      "target": "nsjS0kRv5UxbwvvI",
+      "sourceHandle": "aztqVZlMYzw7GLO5-source-right",
+      "targetHandle": "nsjS0kRv5UxbwvvI-target-left"
+    },
+    {
+      "source": "nsjS0kRv5UxbwvvI",
+      "target": "wwd2tQpsjspv8p3V",
+      "sourceHandle": "nsjS0kRv5UxbwvvI-source-right",
+      "targetHandle": "wwd2tQpsjspv8p3V-target-left"
+    },
+    {
+      "source": "wwd2tQpsjspv8p3V",
+      "target": "zbCUS7Derij45SyZ",
+      "sourceHandle": "wwd2tQpsjspv8p3V-source-right",
+      "targetHandle": "zbCUS7Derij45SyZ-target-left"
+    },
+    {
+      "source": "zbCUS7Derij45SyZ",
+      "target": "zD51BKiLGzaFsTiZ",
+      "sourceHandle": "zbCUS7Derij45SyZ-source-right",
+      "targetHandle": "zD51BKiLGzaFsTiZ-target-left"
+    },
+    {
+      "source": "zD51BKiLGzaFsTiZ",
+      "target": "pluginOutput",
+      "sourceHandle": "zD51BKiLGzaFsTiZ-source-right",
+      "targetHandle": "pluginOutput-target-left"
+    }
+  ],
+  "chatConfig": {
+    "welcomeText": "",
+    "variables": [],
+    "questionGuide": {
+      "open": false,
+      "model": "gpt-4o-mini",
+      "customPrompt": ""
+    },
+    "ttsConfig": {
+      "type": "web"
+    },
+    "whisperConfig": {
+      "open": false,
+      "autoSend": false,
+      "autoTTSResponse": false
+    },
+    "chatInputGuide": {
+      "open": false,
+      "textList": [],
+      "customUrl": ""
+    },
+    "instruction": "",
+    "autoExecute": {
+      "open": false,
+      "defaultPrompt": ""
+    },
+    "_id": "6891fa5248e441955c377d74"
+  }
+}
